@@ -35,6 +35,7 @@ function populateDoctorDropdown() {
   });
 }
 
+// Fungsi untuk menambahkan Item Invoice
 function addInvoiceItem() {
   itemCounter++;
   const newItemRow = `
