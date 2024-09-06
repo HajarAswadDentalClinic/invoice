@@ -135,6 +135,26 @@
     {
       "description": "Perawatan Saluran Akar - Berat",
       "unitPrice": 450000
+    },
+    {
+      "description": "Sikat Gigi Orthodontic Toothbrush",
+      "unitPrice": 20000
+    },
+    {
+      "description": "Dental Floss Macromolecule",
+      "unitPrice": 15000
+    },
+    {
+      "description": "Dental Wax",
+      "unitPrice": 10000
+    },
+    {
+      "description": "Sikat Interdental Floss Heads",
+      "unitPrice": 7000
+    },
+    {
+      "description": "Obat Kumur Dentova",
+      "unitPrice": 35000
     }
   ],
   "doctors": [
