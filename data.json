@@ -123,6 +123,18 @@
     {
       "description": "Behel - Sapphire - Atas & Bawah",
       "unitPrice": 4500000
+    },
+    {
+      "description": "Perawatan Saluran Akar - Ringan",
+      "unitPrice": 350000
+    },
+    {
+      "description": "Perawatan Saluran Akar - Sedang",
+      "unitPrice": 400000
+    },
+    {
+      "description": "Perawatan Saluran Akar - Berat",
+      "unitPrice": 450000
     }
   ],
   "doctors": [
