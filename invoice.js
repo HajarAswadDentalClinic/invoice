@@ -188,7 +188,32 @@ function previewInvoice() {
 
   $.get("./sdf.html", function (data) {
     const customerName = $("#customerName").val().trim();
-    const invoiceDate = $("#invoiceDate").val(); // Mengambil tanggal tanpa waktu
+    const customerAddress = $("#customerAddress").val().trim();
+    const doctorName = $("#doctorSelect option:selected").text();
+    const invoiceDate = $("#invoiceDate").val();
+    const customerBirthInput = $("#customerBirth").val();
+    const customerAge = $("#customerAge").val().trim();
+
+    // Format tanggal lahir pasien
+    const customerBirth = new Date(customerBirthInput).toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+
+    // Konversi invoiceDate ke objek Date
+    const invoiceDateObj = new Date(invoiceDate.split(" ").reverse().join("-"));
+
+    // Hitung expired date dengan menambah 100 hari dari invoiceDate
+    const expiredDateObj = new Date(invoiceDateObj);
+    expiredDateObj.setDate(expiredDateObj.getDate() + 100);
+
+    // Format expired date agar sesuai dengan format invoiceDate
+    const expiredDate = expiredDateObj.toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
 
     let itemsHtml = "";
 
@@ -199,26 +224,40 @@ function previewInvoice() {
       const totalItemPrice = $(this).find(".totalItemPrice").val();
 
       itemsHtml += `
-        <tr>
-          <td>${description}</td>
-          <td>${quantity}</td>
-          <td>${unitPrice}</td>
-          <td>${totalItemPrice}</td>
-        </tr>
-      `;
+          <tr>
+            <td>${description}</td>
+            <td>${quantity}</td>
+            <td>${unitPrice}</td>
+            <td>${totalItemPrice}</td>
+          </tr>
+        `;
     });
 
     const totalAmount = $("#totalAmount").val();
 
     // Ganti placeholder dengan data nyata
-    const filledInvoice = data.replace("{{customerName}}", customerName).replace("{{invoiceDate}}", invoiceDate).replace("{{invoiceItems}}", itemsHtml).replace("{{totalAmount}}", totalAmount);
+    const filledInvoice = data
+      .replace("{{customerName}}", customerName)
+      .replace("{{invoiceDate}}", invoiceDate)
+      .replace("{{expiredDate}}", expiredDate)
+      .replace("{{invoiceItems}}", itemsHtml)
+      .replace("{{totalAmount}}", totalAmount)
+      .replace("{{doctorName}}", doctorName)
+      .replace("{{customerAddress}}", customerAddress)
+      .replace("{{customerBirth}}", customerBirth)
+      .replace("{{customerAge}}", customerAge);
 
     const newWindow = window.open("", "_blank");
     newWindow.document.write(filledInvoice);
     newWindow.document.close();
+
     // Refresh halaman setelah unduhan selesai
     location.reload();
   }).fail(function () {
     alert("Failed to load the invoice template. Please check the file path.");
   });
+}
+
+function printInvoice() {
+  window.print();
 }
