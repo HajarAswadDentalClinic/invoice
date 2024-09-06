@@ -1,0 +1,174 @@
+{
+  "items": [
+    {
+      "description": "Scaling - (D) - Ringan",
+      "unitPrice": 150000
+    },
+    {
+      "description": "Scaling - (D) - Sedang",
+      "unitPrice": 175000
+    },
+    {
+      "description": "Scaling - (D) - Berat",
+      "unitPrice": 200000
+    },
+    {
+      "description": "Scaling - (A) - Ringan",
+      "unitPrice": 125000
+    },
+    {
+      "description": "Scaling - (A) - Sedang",
+      "unitPrice": 150000
+    },
+    {
+      "description": "Cabut Gigi - (D) - Ringan",
+      "unitPrice": 175000
+    },
+    {
+      "description": "Cabut Gigi - (D) - Sedang",
+      "unitPrice": 200000
+    },
+    {
+      "description": "Cabut Gigi - (D) - Berat",
+      "unitPrice": 225000
+    },
+    {
+      "description": "Cabut Gigi - (A) - Ringan",
+      "unitPrice": 100000
+    },
+    {
+      "description": "Cabut Gigi - (A) - Sedang",
+      "unitPrice": 125000
+    },
+    {
+      "description": "Cabut Gigi - (A) - Berat",
+      "unitPrice": 150000
+    },
+    {
+      "description": "Cabut Gigi Bungsu Molar Ujung - Ringan",
+      "unitPrice": 1500000
+    },
+    {
+      "description": "Cabut Gigi Bungsu Molar Ujung - Sedang",
+      "unitPrice": 1750000
+    },
+    {
+      "description": "Cabut Gigi Bungsu Molar Ujung - Berat",
+      "unitPrice": 2000000
+    },
+    {
+      "description": "Tambal - (D) Gigi Depan - Ringan",
+      "unitPrice": 225000
+    },
+    {
+      "description": "Tambal - (D) Gigi Depan - Sedang",
+      "unitPrice": 250000
+    },
+    {
+      "description": "Tambal - (D) Gigi Depan - Berat",
+      "unitPrice": 275000
+    },
+    {
+      "description": "Tambal - (D) Gigi Belakang - Ringan",
+      "unitPrice": 175000
+    },
+    {
+      "description": "Tambal - (D) Gigi Belakang - Sedang",
+      "unitPrice": 200000
+    },
+    {
+      "description": "Tambal - (D) Gigi Belakang - Berat",
+      "unitPrice": 225000
+    },
+    {
+      "description": "Tambal - (A) - Ringan",
+      "unitPrice": 100000
+    },
+    {
+      "description": "Tambal - (A) - Sedang",
+      "unitPrice": 125000
+    },
+    {
+      "description": "Tambal - (A) - Berat",
+      "unitPrice": 150000
+    },
+    {
+      "description": "Dental Spa",
+      "unitPrice": 300000
+    },
+    {
+      "description": "Bleaching",
+      "unitPrice": 650000
+    },
+    {
+      "description": "Behel - Metal - Atas / Bawah",
+      "unitPrice": 1000000
+    },
+    {
+      "description": "Behel - Metal - Atas & Bawah",
+      "unitPrice": 2000000
+    },
+    {
+      "description": "Behel - Ceramic - Atas / Bawah",
+      "unitPrice": 1500000
+    },
+    {
+      "description": "Behel - Ceramic - Atas & Bawah",
+      "unitPrice": 3000000
+    },
+    {
+      "description": "Behel - Sapphire - Atas / Bawah",
+      "unitPrice": 2500000
+    },
+    {
+      "description": "Behel - Sapphire - Atas & Bawah",
+      "unitPrice": 4500000
+    },
+    {
+      "description": "Perawatan Saluran Akar - Ringan",
+      "unitPrice": 350000
+    },
+    {
+      "description": "Perawatan Saluran Akar - Sedang",
+      "unitPrice": 400000
+    },
+    {
+      "description": "Perawatan Saluran Akar - Berat",
+      "unitPrice": 450000
+    },
+    {
+      "description": "Sikat Gigi Orthodontic Toothbrush",
+      "unitPrice": 20000
+    },
+    {
+      "description": "Dental Floss Macromolecule",
+      "unitPrice": 15000
+    },
+    {
+      "description": "Dental Wax",
+      "unitPrice": 10000
+    },
+    {
+      "description": "Sikat Interdental Floss Heads",
+      "unitPrice": 7000
+    },
+    {
+      "description": "Obat Kumur Dentova",
+      "unitPrice": 35000
+    }
+  ],
+  "doctors": [
+    {
+      "id": 1,
+      "name": "drg. Novira Zahara Banurea"
+    },
+    {
+      "id": 2,
+      "name": "drg. Laras Dwi Yanita"
+    },
+    {
+      "id": 3,
+      "name": "drg. Rahma Khairunnisa"
+    }
+  ]
+}
