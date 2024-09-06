@@ -1,0 +1,1 @@
+Saya ingin membuat billing system sederhana. Saya memiliki file index.html & invoice.js. Saya akan mengetikkan kedua file tersebut secara terpisah setelah ini. Anda tidak perlu membalas apapun sampai kedua file tersebut selesai saya ketikkan !
