@@ -35,7 +35,7 @@
                             <div class = "invoice-head-middle-right text-end">
                                 <p><span class = "text-bold">Date</span> : {{invoiceDate}}</p>
                                 <p><span class = "text-bold">Exp Date</span> : {{expiredDate}}</p>
-                                <p><span class = "text-bold">Point</span> : {{pointAmount}}</p>
+                                <p class = "text-bold">Point ({{pointAvg}}) : {{pointAmount}}</p>
                             </div>
                         </div>
                         <div class = "hr"></div>
@@ -74,9 +74,13 @@
                                 </thead>
                                 <tbody>
                                     {{invoiceItems}}
-                                    <tr></tr>
+                                    <tr>
+                                        <td colspan="3" class = "info-item-td text-end text-bold">Discount</td>
+                                        <td colspan="3" class = "info-item-td text-bold"> {{discount}}</td>
+                                    </tr>
+                                    <tr>
                                         <td colspan="3" class = "info-item-td text-end text-bold">Total</td>
-                                        <td colspan="3" class = "info-item-td"> {{totalAmount}}</td>
+                                        <td colspan="3" class = "info-item-td text-bold"> {{totalAmount}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -103,7 +107,12 @@
                 </div>
             </div>
         </div>
-
+        <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
         <script src = "invoice.js"></script>
     </body>
 </html>

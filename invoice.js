@@ -2,7 +2,6 @@ let itemCounter = 0;
 let itemsData = [];
 let doctorsData = [];
 
-// Fungsi untuk format angka menjadi Rupiah tanpa dua angka di belakang koma
 function formatRupiah(angka) {
   return new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -11,12 +10,10 @@ function formatRupiah(angka) {
   }).format(angka);
 }
 
-// Fungsi untuk menghapus format Rupiah dan mengembalikan angka murni
 function parseRupiah(value) {
   return parseFloat(value.replace(/[^\d,-]/g, "").replace(",", ".")) || 0;
 }
 
-// Fungsi untuk memanggil data dari data.json
 function loadData() {
   $.getJSON("./data.json", function (data) {
     console.log("Data loaded:", data);
@@ -28,14 +25,12 @@ function loadData() {
   });
 }
 
-// Fungsi untuk menambahkan dropdown dokter
 function populateDoctorDropdown() {
   doctorsData.forEach((doctor) => {
     $("#doctorSelect").append(`<option value="${doctor.id}">${doctor.name}</option>`);
   });
 }
 
-// Fungsi untuk menambahkan Item Invoice
 function addInvoiceItem() {
   itemCounter++;
   const newItemRow = `
@@ -71,8 +66,10 @@ function removeInvoiceItem(itemId) {
   updateTotalAmount();
 }
 
-function updateTotalAmount() {
+function applyDiscount() {
+  const discountValue = parseRupiah($("#discountInput").val());
   let totalAmount = 0;
+
   $("tr[id^='itemRow']").each(function () {
     const quantity = parseFloat($(this).find(".quantity").val()) || 1;
     const unitPrice = parseRupiah($(this).find(".unitPrice").val()) || 0;
@@ -82,18 +79,31 @@ function updateTotalAmount() {
     totalAmount += totalItemPrice;
   });
 
+  totalAmount -= discountValue;
+
   $("#totalAmount").val(formatRupiah(totalAmount));
   togglePreviewButton();
 }
 
-// Fungsi untuk mengaktifkan atau menonaktifkan tombol preview
+function updateTotalAmount() {
+  applyDiscount();
+}
+
+$("#discountInput").on("input", function () {
+  updateTotalAmount();
+});
+
+$("#discountInput").on("blur", function () {
+  const value = parseRupiah($(this).val());
+  $(this).val(formatRupiah(value));
+});
+
 function togglePreviewButton() {
   const totalAmount = parseRupiah($("#totalAmount").val());
   $("#previewInvoiceBtn").prop("disabled", totalAmount <= 0);
 }
 
 $(document).ready(function () {
-  // Set tanggal invoice tanpa waktu
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleDateString("id-ID", {
     day: "numeric",
@@ -116,7 +126,6 @@ $(document).on("change", ".descriptionSelect", function () {
   updateTotalAmount();
 });
 
-// Menghitung usia berdasarkan tanggal lahir
 $("#customerBirth").on("change", function () {
   const birthDate = new Date($(this).val());
   const today = new Date();
@@ -194,7 +203,6 @@ function previewInvoice() {
     const customerBirthInput = $("#customerBirth").val();
     const customerAge = $("#customerAge").val().trim();
 
-    // Format tanggal lahir pasien
     const customerBirth = new Date(customerBirthInput).toLocaleDateString("id-ID", {
       day: "numeric",
       month: "long",
@@ -224,16 +232,20 @@ function previewInvoice() {
       const totalItemPrice = $(this).find(".totalItemPrice").val();
 
       itemsHtml += `
-          <tr>
-            <td>${description}</td>
-            <td>${quantity}</td>
-            <td>${unitPrice}</td>
-            <td>${totalItemPrice}</td>
-          </tr>
-        `;
+            <tr>
+              <td>${description}</td>
+              <td class="text-center">${quantity}</td>
+              <td>${unitPrice}</td>
+              <td>${totalItemPrice}</td>
+            </tr>
+          `;
     });
 
-    const totalAmount = $("#totalAmount").val();
+    const totalAmount = parseRupiah($("#totalAmount").val());
+    const discount = parseRupiah($("#discountInput").val()) || 0;
+    // const discountedAmount = totalAmount - discount;
+    const pointAmount = totalAmount * 0.1; // 10% dari totalAmount setelah diskon
+    const pointAvg = Math.floor(pointAmount / 2500); // pointAmount dibagi 2500
 
     // Ganti placeholder dengan data nyata
     const filledInvoice = data
@@ -241,11 +253,14 @@ function previewInvoice() {
       .replace("{{invoiceDate}}", invoiceDate)
       .replace("{{expiredDate}}", expiredDate)
       .replace("{{invoiceItems}}", itemsHtml)
-      .replace("{{totalAmount}}", totalAmount)
+      .replace("{{totalAmount}}", formatRupiah(totalAmount))
       .replace("{{doctorName}}", doctorName)
       .replace("{{customerAddress}}", customerAddress)
       .replace("{{customerBirth}}", customerBirth)
-      .replace("{{customerAge}}", customerAge);
+      .replace("{{customerAge}}", customerAge)
+      .replace("{{discount}}", formatRupiah(discount))
+      .replace("{{pointAmount}}", formatRupiah(pointAmount))
+      .replace("{{pointAvg}}", pointAvg);
 
     const newWindow = window.open("", "_blank");
     newWindow.document.write(filledInvoice);

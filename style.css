@@ -18,16 +18,20 @@ body {
   align-items: center;
   border-radius: 10px;
 }
+
 .logo {
   max-height: 60px;
 }
+
 .header-text {
   margin-left: 20px;
 }
+
 .header-text .clinic-name {
   font-size: 24px;
   font-weight: bold;
 }
+
 .header-text .clinic-subtitle {
   font-size: 16px;
   color: gray;
@@ -85,7 +89,6 @@ td {
   width: 5%;
 }
 
-/* Menghilangkan semua garis pada tfoot */
 tfoot,
 tfoot tr,
 tfoot td {
@@ -94,25 +97,25 @@ tfoot td {
   border-bottom: none !important;
 }
 
-/* Jika ada garis pada seluruh table */
 table {
-  border-collapse: collapse; /* Optional: ini memastikan semua border bergabung */
+  border-collapse: collapse;
 }
 
-/* Menghapus garis khusus pada table jika masih ada */
 table td,
 table th {
   border: none !important;
 }
 
-/* Pastikan tombol-tombol berada di kiri */
 tfoot td.align-middle.text-start {
   text-align: left;
 }
 
-/* Menyelaraskan input diskon dan total amount ke kanan */
 tfoot td.text-end {
   text-align: right;
+}
+
+.text-bold {
+  font-weight: 700;
 }
 
 @media (max-width: 767px) {
