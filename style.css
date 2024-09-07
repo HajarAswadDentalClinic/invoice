@@ -85,6 +85,36 @@ td {
   width: 5%;
 }
 
+/* Menghilangkan semua garis pada tfoot */
+tfoot,
+tfoot tr,
+tfoot td {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* Jika ada garis pada seluruh table */
+table {
+  border-collapse: collapse; /* Optional: ini memastikan semua border bergabung */
+}
+
+/* Menghapus garis khusus pada table jika masih ada */
+table td,
+table th {
+  border: none !important;
+}
+
+/* Pastikan tombol-tombol berada di kiri */
+tfoot td.align-middle.text-start {
+  text-align: left;
+}
+
+/* Menyelaraskan input diskon dan total amount ke kanan */
+tfoot td.text-end {
+  text-align: right;
+}
+
 @media (max-width: 767px) {
   .row.align-items-center .col-md-6 {
     margin-bottom: 10px;
